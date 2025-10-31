@@ -67,6 +67,4 @@ Pull requests are welcome. Please:
 3. Manually verify key flows (intervention redirect, timer overlay, alarms) since automated tests are not configured.
 4. Update the local changelog even though it stays untracked.
 
-## License
 
-Choose and add a license that matches how you intend others to use Mindful X Blocker. If unsure, MIT is a permissive default.
