@@ -1,0 +1,16 @@
+{
+  "name": "chromeextn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"No automated tests yet\"",
+    "generate:icons": "node scripts/generate-icons.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "pngjs": "^7.0.0"
+  }
+}

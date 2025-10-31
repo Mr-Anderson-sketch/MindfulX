@@ -1,0 +1,10 @@
+# Keep local documentation private
+*.md
+!FINAL-README.md
+
+# macOS cruft
+.DS_Store
+
+# Node artifacts
+node_modules/
+npm-debug.log*

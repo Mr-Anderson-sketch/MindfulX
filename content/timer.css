@@ -1,0 +1,182 @@
+:root {
+	--overlay-bg: rgba(248, 244, 239, 0.92);
+	--overlay-border: rgba(168, 192, 165, 0.6);
+	--overlay-text: #3a3a3a;
+	--state-ok: #a8c0a5;
+	--state-warn: #e1cfa7;
+	--state-critical: #d46c63;
+	--modal-backdrop: rgba(58, 58, 58, 0.55);
+	--modal-panel: #f9f4ef;
+}
+
+.mindful-timer {
+	position: fixed;
+	bottom: 24px;
+	right: 24px;
+	z-index: 2147483646;
+	background: var(--overlay-bg);
+	border: 1px solid var(--overlay-border);
+	border-radius: 18px;
+	padding: 12px 18px;
+	min-width: 180px;
+	box-shadow: 0 10px 32px rgba(58, 58, 58, 0.18);
+	font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+	color: var(--overlay-text);
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	backdrop-filter: blur(4px);
+}
+
+.mindful-timer__indicator {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: var(--state-ok);
+	box-shadow: 0 0 0 4px rgba(168, 192, 165, 0.25);
+	transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mindful-timer[data-state="warning"] .mindful-timer__indicator {
+	background: var(--state-warn);
+	box-shadow: 0 0 0 4px rgba(225, 207, 167, 0.35);
+}
+
+.mindful-timer[data-state="critical"] .mindful-timer__indicator {
+	background: var(--state-critical);
+	box-shadow: 0 0 0 4px rgba(212, 108, 99, 0.3);
+}
+
+.mindful-timer__content {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.mindful-timer__label {
+	font-size: 12px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: rgba(58, 58, 58, 0.6);
+}
+
+.mindful-timer__remaining {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.mindful-modal {
+	position: fixed;
+	inset: 0;
+	background: var(--modal-backdrop);
+	backdrop-filter: blur(6px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2147483647;
+	padding: 32px;
+}
+
+.mindful-modal__panel {
+	width: min(520px, 100%);
+	background: var(--modal-panel);
+	border-radius: 28px;
+	padding: 36px;
+	box-shadow: 0 28px 64px rgba(58, 58, 58, 0.35);
+	font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	position: relative;
+}
+
+.mindful-modal__badge {
+	align-self: flex-start;
+	background: rgba(212, 108, 99, 0.18);
+	color: var(--state-critical);
+	border-radius: 999px;
+	padding: 6px 16px;
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.mindful-modal__panel h2 {
+	margin: 0;
+	font-size: clamp(28px, 4vw, 34px);
+}
+
+.mindful-modal__panel p {
+	margin: 0;
+	color: rgba(58, 58, 58, 0.75);
+	line-height: 1.5;
+}
+
+.mindful-modal__purpose {
+	background: rgba(168, 192, 165, 0.18);
+	border-left: 3px solid var(--state-ok);
+	padding: 12px 16px;
+	border-radius: 12px;
+	font-size: 14px;
+}
+
+.mindful-modal__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.mindful-modal__actions button {
+	font: inherit;
+	border-radius: 999px;
+	border: none;
+	padding: 14px 22px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.mindful-modal__actions button.primary {
+	background: linear-gradient(120deg, #d46c63, #e8b9a4);
+	color: #fffaf7;
+	box-shadow: 0 16px 32px rgba(212, 108, 99, 0.35);
+}
+
+.mindful-modal__actions button.secondary {
+	background: transparent;
+	color: var(--overlay-text);
+	border: 1px solid rgba(58, 58, 58, 0.2);
+}
+
+.mindful-modal__actions button:hover,
+.mindful-modal__actions button:focus-visible {
+	transform: translateY(-2px);
+	box-shadow: 0 18px 32px rgba(58, 58, 58, 0.2);
+	outline: none;
+}
+
+.mindful-modal__actions button.secondary:hover,
+.mindful-modal__actions button.secondary:focus-visible {
+	box-shadow: 0 14px 28px rgba(58, 58, 58, 0.12);
+}
+
+.mindful-hidden {
+	display: none !important;
+}
+
+@media (max-width: 520px) {
+	.mindful-timer {
+		bottom: 16px;
+		right: 16px;
+		left: 16px;
+		min-width: unset;
+	}
+
+	.mindful-modal {
+		padding: 16px;
+	}
+
+	.mindful-modal__panel {
+		padding: 28px 20px;
+	}
+}
