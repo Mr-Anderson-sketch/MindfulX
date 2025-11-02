@@ -64,24 +64,39 @@ body {
 .header {
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
+	gap: 16px;
 	position: relative;
 	z-index: 1;
 }
 
+.header__top {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.header__logo {
+	max-width: 80px;
+	height: auto;
+	flex-shrink: 0;
+	filter: drop-shadow(0 2px 8px rgba(56, 102, 65, 0.12));
+}
+
 .header h1 {
 	margin: 0;
-	font-size: clamp(28px, 4vw, 36px);
+	font-size: clamp(24px, 4vw, 32px);
 	font-weight: 600;
 	line-height: 1.2;
-	text-align: center;
-	align-self: center;
+	text-align: left;
 }
 
 .header p {
 	margin: 0;
 	font-size: 16px;
 	color: rgba(56, 102, 65, 0.72);
+	text-align: center;
 }
 
 .activities {
@@ -957,7 +972,7 @@ body {
 }
 
 .target-pill {
-	align-self: flex-start;
+	align-self: center;
 	background: rgba(167, 201, 87, 0.25);
 	color: var(--forest);
 	border-radius: 999px;
@@ -970,6 +985,7 @@ body {
 .previous-purpose {
 	font-size: 13px;
 	color: rgba(56, 102, 65, 0.6);
+	text-align: center;
 }
 
 .status-chip {

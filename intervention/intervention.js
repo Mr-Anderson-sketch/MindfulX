@@ -128,8 +128,10 @@ function render() {
 	app.innerHTML = `
 		<main class="shell" aria-live="polite">
 			<div class="header">
-				<span class="target-pill">${targetHost}</span>
-				<h1>WHAT ARE YOU HERE FOR?</h1>
+				<div class="header__top">
+					<img src="${chrome.runtime.getURL('icons/MindfulX Logo.png')}" alt="MindfulX Logo" class="header__logo" />
+					<h1>What are you here for?</h1>
+				</div>
 				<p>Take a mindful pause before heading into ${targetHost}. Choose an alternative or set a clear, time-bound intention.</p>
 				${state.pending.previousPurpose ? `<p class="previous-purpose">Previously: "${escapeHtml(state.pending.previousPurpose)}"</p>` : ""}
 			</div>
@@ -155,7 +157,7 @@ function render() {
 
 				<div class="field">
 					<label for="minutes">Total engagement time required (minutes):</label>
-					<input id="minutes" name="minutes" type="number" min="1" max="120" inputmode="numeric" placeholder="e.g., 15" value="${state.minutes}" required />
+					<input id="minutes" name="minutes" type="number" min="1" max="120" inputmode="numeric" placeholder="e.g., 15" value="${escapeHtml(state.minutes)}" required />
 					<small>Choose between 1 and 120 minutes. We'll hold you accountable.</small>
 					<small class="error" hidden data-error-time></small>
 				</div>

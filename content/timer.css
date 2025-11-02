@@ -104,6 +104,7 @@
 .mindful-modal__panel h2 {
 	margin: 0;
 	font-size: clamp(28px, 4vw, 34px);
+	color: var(--overlay-text);
 }
 
 .mindful-modal__panel p {

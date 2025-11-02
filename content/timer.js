@@ -178,13 +178,13 @@ function ensureModalElements() {
 
 	const badge = document.createElement("span");
 	badge.className = "mindful-modal__badge";
-	badge.textContent = "Time's up";
+	badge.textContent = "TIME'S UP";
 
 	const heading = document.createElement("h2");
-	heading.textContent = "Time's up!";
+	heading.textContent = "Your mindful session has ended";
 
 	const message = document.createElement("p");
-	message.textContent = "Your mindful session has ended. Take a breath and return to your priorities.";
+	message.textContent = "Take a breath and return to your priorities.";
 
 	const purpose = document.createElement("div");
 	purpose.className = "mindful-modal__purpose";
