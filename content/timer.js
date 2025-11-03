@@ -6,9 +6,17 @@ const state = {
 	modal: null,
 	modalPurpose: null,
 	modalExtendBtn: null,
-	modalCloseBtn: null
+	modalCloseBtn: null,
+	modalBadge: null,
+	modalHeading: null,
+	modalMessage: null
 };
 
+const MODAL_COPY = {
+	badge: "TIME'S UP",
+	heading: "Your mindful session has ended",
+	message: "Take a breath and return to your priorities."
+};
 bootstrap().catch((error) => {
 	console.error("Mindful X timer failed to boot", error);
 });
@@ -169,22 +177,20 @@ function ensureModalElements() {
 	if (state.modal) {
 		return;
 	}
-
 	const backdrop = document.createElement("section");
 	backdrop.className = "mindful-modal mindful-hidden";
 
 	const panel = document.createElement("article");
 	panel.className = "mindful-modal__panel";
-
 	const badge = document.createElement("span");
 	badge.className = "mindful-modal__badge";
-	badge.textContent = "TIME'S UP";
+	badge.textContent = MODAL_COPY.badge;
 
 	const heading = document.createElement("h2");
-	heading.textContent = "Your mindful session has ended";
+	heading.textContent = MODAL_COPY.heading;
 
 	const message = document.createElement("p");
-	message.textContent = "Take a breath and return to your priorities.";
+	message.textContent = MODAL_COPY.message;
 
 	const purpose = document.createElement("div");
 	purpose.className = "mindful-modal__purpose";
@@ -219,6 +225,9 @@ function ensureModalElements() {
 	state.modalPurpose = purpose;
 	state.modalCloseBtn = closeBtn;
 	state.modalExtendBtn = extendBtn;
+	state.modalBadge = badge;
+	state.modalHeading = heading;
+	state.modalMessage = message;
 }
 
 function showExpiryModal() {
@@ -227,8 +236,24 @@ function showExpiryModal() {
 		return;
 	}
 
-	const purposeText = state.session?.purpose ? `You planned to: ${state.session.purpose}` : "Remember why you came here.";
-	state.modalPurpose.textContent = purposeText;
+	if (state.modalBadge) {
+		state.modalBadge.textContent = MODAL_COPY.badge;
+	}
+
+	if (state.modalHeading) {
+		state.modalHeading.textContent = MODAL_COPY.heading;
+	}
+
+	if (state.modalMessage) {
+		state.modalMessage.textContent = MODAL_COPY.message;
+	}
+
+	const plannedPurpose = typeof state.session?.purpose === "string" ? state.session.purpose.trim() : "";
+	if (plannedPurpose) {
+		state.modalPurpose.textContent = `You planned to: ${plannedPurpose}`;
+	} else {
+		state.modalPurpose.textContent = "Remember why you came here.";
+	}
 	state.modal.classList.remove("mindful-hidden");
 }
 
