@@ -1,6 +1,8 @@
 # Keep local documentation private
 *.md
 !FINAL-README.md
+!INSTALL.md
+!QUICK-START.md
 
 # macOS cruft
 .DS_Store
